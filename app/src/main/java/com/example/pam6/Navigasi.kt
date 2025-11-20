@@ -36,6 +36,7 @@ fun SiswaApp(
 
             modifier = Modifier.padding(isiRuang)){
             composable(route = Navigasi.Formulir.name){
+                //edit 3 ; tambahkan variabel konteks
                 FormSiswa (
                     //pilihanJK = JenisK.map { id -> konteks.resources.getString(id) },
                     OnSubmitBtnClick = {
