@@ -4,10 +4,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.pam6.model.Siswa
+import com.example.pam6.view.FormSiswa
+import com.example.pam6.view.TampilData
+import com.example.pam6.viewmodel.SiswaViewModel
 
 enum class Navigasi {
     Formulir,
@@ -15,9 +20,11 @@ enum class Navigasi {
 }
 
 @Composable
-fun DataApp(
+fun SiswaApp(
+    //edit 1 : parameter viewModel
     navController: NavHostController = rememberNavController(),
-    modifier: Modifier
+    modifier: Modifier,
+    viewModel: SiswaViewModel = viewModel ()
 ){
     Scaffold { isiRuang->
         NavHost(
@@ -26,7 +33,7 @@ fun DataApp(
 
             modifier = Modifier.padding(isiRuang)){
             composable(route = Navigasi.Formulir.name){
-                FormIsian (
+                FormSiswa (
                     //pilihanJK = JenisK.map { id -> konteks.resources.getString(id) },
                     OnSubmitBtnClick = {
                         navController.navigate(Navigasi.Detail.name)
