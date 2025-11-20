@@ -8,10 +8,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.Button
 import androidx.compose.material3.DividerDefaults.Thickness
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
@@ -58,9 +60,11 @@ fun FormSiswa(
         Column(modifier = Modifier.padding(isiRuang),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally) {
+            //edit 3 ; value, onValueChange, selected, onclick
             OutlinedTextField(
                 value = txtNama,
                 singleLine = true,
+                shape = MaterialTheme.shapes.medium,
                 modifier = Modifier
                     .padding(top = 20.dp)
                     .width(250.dp),
@@ -74,12 +78,17 @@ fun FormSiswa(
                 .width(250.dp), thickness = Thickness,color =
                 Color.Red)
             Row{
-                txtGender.forEach {
-                        item->
-                    Row(verticalAlignment = Alignment.CenterVertically){
+                pilihanJK.forEach { item->
+                    Row(modifier = Modifier.selectable(
+                        selected = txtGender == item,
+                        onClick = {
+                            txtGender = item
+                        }
+                    ),
+                        verticalAlignment = Alignment.CenterVertically){
                         RadioButton(
-                            selected = false,
-                            onClick = {item}
+                            selected = txtGender == item,
+                            onClick = {txtGender = item}
                         )
                     }
                 }
