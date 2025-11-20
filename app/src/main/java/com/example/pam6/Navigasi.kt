@@ -5,6 +5,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -37,6 +38,7 @@ fun SiswaApp(
             modifier = Modifier.padding(isiRuang)){
             composable(route = Navigasi.Formulir.name){
                 //edit 3 ; tambahkan variabel konteks
+                val konteks = LocalContext.current
                 FormSiswa (
                     //pilihanJK = JenisK.map { id -> konteks.resources.getString(id) },
                     OnSubmitBtnClick = {
