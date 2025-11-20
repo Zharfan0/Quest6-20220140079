@@ -11,6 +11,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.pam6.model.DataJK.JenisK
 import com.example.pam6.model.Siswa
 import com.example.pam6.view.FormSiswa
 import com.example.pam6.view.TampilData
@@ -40,8 +41,9 @@ fun SiswaApp(
                 //edit 3 ; tambahkan variabel konteks
                 val konteks = LocalContext.current
                 FormSiswa (
-                    //pilihanJK = JenisK.map { id -> konteks.resources.getString(id) },
-                    OnSubmitBtnClick = {
+                    pilihanJK = JenisK.map { id -> konteks.resources.getString(id) },
+                    onSubmitButtonClicked = {
+                        viewModel.setSiswa(it)
                         navController.navigate(Navigasi.Detail.name)
                     }
                 )
