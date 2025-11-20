@@ -81,7 +81,6 @@ fun FormSiswa(
                             selected = false,
                             onClick = {item}
                         )
-                        txtGender(text = item)
                     }
                 }
             }
@@ -102,7 +101,7 @@ fun FormSiswa(
             Spacer(modifier = Modifier.height(30.dp))
             Button(
                 modifier = Modifier.fillMaxWidth(1f),
-                onClick = onSubmitButtonClicked
+                onClick = onSubmitButtonClicked(listData)
             ){
                 Text(stringResource(id = R.string.submit))
             }
