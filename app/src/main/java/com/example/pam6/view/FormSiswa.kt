@@ -26,11 +26,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.R
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.pam6.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -49,7 +49,7 @@ fun FormSiswa(
     Scaffold (modifier=Modifier,
         {
             TopAppBar(
-                title = {Text(stringResource(id= R.string.home),
+                title = {Text(stringResource(id= R.string.detail),
                     color = Color.White)},
                 colors = TopAppBarDefaults.mediumTopAppBarColors
                     (colorResource(id = R.color.teal_700))
@@ -59,27 +59,29 @@ fun FormSiswa(
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally) {
             OutlinedTextField(
-                value = "",
+                value = txtNama,
                 singleLine = true,
                 modifier = Modifier
                     .padding(top = 20.dp)
                     .width(250.dp),
                 label = {Text(text = "Nama Lengkap")},
-                onValueChange = {},
+                onValueChange = {
+                    txtNama = it
+                },
             )
             HorizontalDivider(modifier = Modifier
                 .padding(20.dp)
                 .width(250.dp), thickness = Thickness,color =
                 Color.Red)
             Row{
-                jenisK.forEach {
+                txtGender.forEach {
                         item->
                     Row(verticalAlignment = Alignment.CenterVertically){
                         RadioButton(
                             selected = false,
                             onClick = {item}
                         )
-                        Text(text = item)
+                        txtGender(text = item)
                     }
                 }
             }
@@ -90,7 +92,7 @@ fun FormSiswa(
                 color = Color.Red
             )
             OutlinedTextField(
-                value = "",
+                value = txtNama,
                 singleLine = true,
                 modifier = Modifier
                     .width(250.dp),
