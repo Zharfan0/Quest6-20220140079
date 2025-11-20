@@ -1,6 +1,6 @@
 package com.example.pam6.model
 
-import androidx.compose.ui.R
+import com.example.pam6.R
 
 object DataJK {
     val JenisK= listOf(
